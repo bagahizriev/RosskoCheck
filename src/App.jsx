@@ -1,11 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Home, Settings as SettingsIcon } from "lucide-react";
 import HomePage from "./pages/HomePage";
 import SettingsPage from "./pages/SettingsPage";
+import { updateChecker } from "./utils/updateChecker";
 import "./App.css";
 
 function App() {
     const [currentPage, setCurrentPage] = useState("home");
+
+    useEffect(() => {
+        // Запускаем проверку обновлений
+        updateChecker.startPeriodicCheck(300000); // каждые 5 минут
+
+        // Очистка при размонтировании
+        return () => {
+            updateChecker.stopPeriodicCheck();
+        };
+    }, []);
 
     return (
         <div className="app">

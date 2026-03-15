@@ -7,6 +7,23 @@ export default defineConfig({
         react(),
         VitePWA({
             registerType: "autoUpdate",
+            workbox: {
+                skipWaiting: true,
+                clientsClaim: true,
+                runtimeCaching: [
+                    {
+                        urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
+                        handler: "CacheFirst",
+                        options: {
+                            cacheName: "google-fonts-cache",
+                            expiration: {
+                                maxEntries: 10,
+                                maxAgeSeconds: 60 * 60 * 24 * 365, // 1 год
+                            },
+                        },
+                    },
+                ],
+            },
             includeAssets: ["favicon.ico"],
             manifest: {
                 name: "ROSSKO Balance",
@@ -15,6 +32,7 @@ export default defineConfig({
                 theme_color: "#2563eb",
                 background_color: "#ffffff",
                 display: "standalone",
+                start_url: "/",
                 icons: [
                     {
                         src: "/icon-192.png",

@@ -10,8 +10,20 @@ function BalanceCard({ balance, loading, error, hasKeys, onRefresh }) {
         return "zero";
     };
 
-    const formatBalance = (balanceStr) => {
-        return balanceStr.replace(/руб/g, "₽");
+    const formatBalance = (balanceValue, currency) => {
+        // Парсим число
+        const number = parseFloat(balanceValue);
+
+        // Форматируем с разделителями тысяч
+        const formattedNumber = number.toLocaleString("ru-RU", {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2,
+        });
+
+        // Заменяем "руб" на "₽"
+        const formattedCurrency = currency.replace(/руб/g, "₽");
+
+        return `${formattedNumber} ${formattedCurrency}`;
     };
 
     const renderContent = () => {
@@ -42,7 +54,7 @@ function BalanceCard({ balance, loading, error, hasKeys, onRefresh }) {
         if (balance) {
             return (
                 <div className="balance-main">
-                    <p className={`balance-amount ${getBalanceColor(balance.balance)}`}>{formatBalance(`${balance.balance} ${balance.currency}`)}</p>
+                    <p className={`balance-amount ${getBalanceColor(balance.balance)}`}>{formatBalance(balance.balance, balance.currency)}</p>
                 </div>
             );
         }

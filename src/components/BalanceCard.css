@@ -12,16 +12,6 @@
     margin-bottom: 20px;
 }
 
-.card-title {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.card-icon {
-    font-size: 20px;
-}
-
 .card-title h3 {
     font-size: 18px;
     color: #1f2937;
@@ -64,7 +54,7 @@
 }
 
 .card-content {
-    min-height: 120px;
+    min-height: 80px;
 }
 
 .loading {
@@ -147,22 +137,12 @@
 .balance-main {
     text-align: center;
     padding: 20px 0;
-    border-bottom: 1px solid #f3f4f6;
-    margin-bottom: 20px;
-}
-
-.balance-label {
-    color: #6b7280;
-    font-size: 12px;
-    margin-bottom: 8px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
 }
 
 .balance-amount {
-    font-size: 32px;
+    font-size: 36px;
     font-weight: bold;
-    margin-bottom: 8px;
+    margin: 0;
 }
 
 .balance-amount.positive {
@@ -173,47 +153,6 @@
     color: #ef4444;
 }
 
-.balance-type {
-    color: #6b7280;
-    font-size: 14px;
-}
-
-.customers {
-    margin-bottom: 20px;
-}
-
-.customers h4 {
+.balance-amount.zero {
     color: #374151;
-    margin-bottom: 12px;
-    font-size: 14px;
-    font-weight: 600;
-}
-
-.customer-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 12px;
-    background: #f9fafb;
-    border-radius: 8px;
-    margin-bottom: 8px;
-}
-
-.customer-name {
-    color: #374151;
-    font-weight: 500;
-    font-size: 14px;
-}
-
-.customer-balance {
-    font-weight: bold;
-    font-size: 14px;
-}
-
-.customer-balance.positive {
-    color: #10b981;
-}
-
-.customer-balance.negative {
-    color: #ef4444;
 }

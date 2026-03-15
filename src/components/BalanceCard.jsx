@@ -3,6 +3,17 @@ import { RefreshCw } from "lucide-react";
 import "./BalanceCard.css";
 
 function BalanceCard({ balance, loading, error, hasKeys, onRefresh }) {
+    const getBalanceColor = (balanceValue) => {
+        const value = parseFloat(balanceValue);
+        if (value > 0) return "positive";
+        if (value < 0) return "negative";
+        return "zero";
+    };
+
+    const formatBalance = (balanceStr) => {
+        return balanceStr.replace(/руб/g, "₽");
+    };
+
     const renderContent = () => {
         if (loading) {
             return (
@@ -40,26 +51,8 @@ function BalanceCard({ balance, loading, error, hasKeys, onRefresh }) {
             return (
                 <div className="balance-content">
                     <div className="balance-main">
-                        <p className="balance-label">Общий баланс</p>
-                        <p className={`balance-amount ${parseFloat(balance.balance) < 0 ? "negative" : "positive"}`}>
-                            {balance.balance} {balance.currency}
-                        </p>
-                        <p className="balance-type">{balance.type}</p>
+                        <p className={`balance-amount ${getBalanceColor(balance.balance)}`}>{formatBalance(`${balance.balance} ${balance.currency}`)}</p>
                     </div>
-
-                    {balance.customers && balance.customers.length > 0 && (
-                        <div className="customers">
-                            <h4>Контрагенты</h4>
-                            {balance.customers.map((customer, index) => (
-                                <div key={index} className="customer-item">
-                                    <span className="customer-name">{customer.name}</span>
-                                    <span className={`customer-balance ${parseFloat(customer.balance) < 0 ? "negative" : "positive"}`}>
-                                        {customer.balance} {balance.currency}
-                                    </span>
-                                </div>
-                            ))}
-                        </div>
-                    )}
                 </div>
             );
         }
@@ -77,8 +70,7 @@ function BalanceCard({ balance, loading, error, hasKeys, onRefresh }) {
         <div className="balance-card">
             <div className="card-header">
                 <div className="card-title">
-                    <span className="card-icon">💰</span>
-                    <h3>ROSSKO Баланс</h3>
+                    <h3>РОССКО</h3>
                 </div>
                 {hasKeys && (
                     <button onClick={onRefresh} className="btn-refresh-small" disabled={loading}>

@@ -1,54 +1,53 @@
 .settings-page {
-    padding: 20px;
-    max-width: 600px;
-    margin: 0 auto;
+    padding: 32px 24px;
+    background: #f8f9fa;
+    height: 100vh;
 }
 
-.page-header {
-    margin-bottom: 30px;
+.settings-page h1 {
+    font-size: 32px;
+    color: #000000;
+    margin: 0 0 32px 0;
+    font-weight: bold;
 }
 
-.page-header h1 {
-    font-size: 28px;
-    color: #1f2937;
-    margin-bottom: 8px;
-}
-
-.page-header p {
-    color: #6b7280;
-    font-size: 16px;
-}
-
-.settings-sections {
+.settings-form {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 16px;
 }
 
-.coming-soon-section {
+.form-input {
+    padding: 16px;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 16px;
     background: white;
-    border-radius: 16px;
-    padding: 24px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    border: 2px dashed #e5e7eb;
+    outline: none;
+    transition: border-color 0.2s;
 }
 
-.section-header {
-    margin-bottom: 16px;
+.form-input:focus {
+    border-color: #2563eb;
 }
 
-.section-header h3 {
-    font-size: 18px;
-    color: #374151;
-    margin-bottom: 4px;
+.btn-save {
+    padding: 16px;
+    background: #000000;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
 }
 
-.coming-soon-content {
-    text-align: center;
-    color: #6b7280;
-    padding: 20px 0;
+.btn-save:hover:not(:disabled) {
+    background: #333333;
 }
 
-.coming-soon-content p {
-    font-size: 14px;
+.btn-save:disabled {
+    background: #9ca3af;
+    cursor: not-allowed;
 }

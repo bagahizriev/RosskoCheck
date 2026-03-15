@@ -1,28 +1,51 @@
-import React from "react";
-import RosskoSettings from "../components/RosskoSettings";
+import React, { useState, useEffect } from "react";
+import { getKeys, saveKeys } from "../db";
 import "./SettingsPage.css";
 
 function SettingsPage() {
+    const [key1, setKey1] = useState("");
+    const [key2, setKey2] = useState("");
+    const [saving, setSaving] = useState(false);
+
+    useEffect(() => {
+        loadKeys();
+    }, []);
+
+    const loadKeys = async () => {
+        const savedKeys = await getKeys();
+        if (savedKeys) {
+            setKey1(savedKeys.key1);
+            setKey2(savedKeys.key2);
+        }
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        if (!key1.trim() || !key2.trim()) return;
+
+        setSaving(true);
+        try {
+            await saveKeys(key1.trim(), key2.trim());
+        } catch (error) {
+            console.error("Ошибка сохранения ключей:", error);
+        } finally {
+            setSaving(false);
+        }
+    };
+
     return (
         <div className="settings-page">
-            <div className="page-header">
-                <h1>⚙️ Настройки</h1>
-                <p>Конфигурация приложения</p>
-            </div>
+            <h1>Rossko API Keys</h1>
 
-            <div className="settings-sections">
-                <RosskoSettings />
+            <form onSubmit={handleSubmit} className="settings-form">
+                <input type="text" value={key1} onChange={(e) => setKey1(e.target.value)} placeholder="KEY1" className="form-input" />
 
-                {/* Здесь будут добавляться новые секции настроек */}
-                <div className="coming-soon-section">
-                    <div className="section-header">
-                        <h3>🔧 Дополнительные настройки</h3>
-                    </div>
-                    <div className="coming-soon-content">
-                        <p>Новые настройки появятся здесь</p>
-                    </div>
-                </div>
-            </div>
+                <input type="text" value={key2} onChange={(e) => setKey2(e.target.value)} placeholder="KEY2" className="form-input" />
+
+                <button type="submit" className="btn-save" disabled={saving || !key1.trim() || !key2.trim()}>
+                    {saving ? "Сохранение..." : "Сохранить"}
+                </button>
+            </form>
         </div>
     );
 }

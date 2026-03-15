@@ -1,0 +1,54 @@
+.settings-page {
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.page-header {
+    margin-bottom: 30px;
+}
+
+.page-header h1 {
+    font-size: 28px;
+    color: #1f2937;
+    margin-bottom: 8px;
+}
+
+.page-header p {
+    color: #6b7280;
+    font-size: 16px;
+}
+
+.settings-sections {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.coming-soon-section {
+    background: white;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border: 2px dashed #e5e7eb;
+}
+
+.section-header {
+    margin-bottom: 16px;
+}
+
+.section-header h3 {
+    font-size: 18px;
+    color: #374151;
+    margin-bottom: 4px;
+}
+
+.coming-soon-content {
+    text-align: center;
+    color: #6b7280;
+    padding: 20px 0;
+}
+
+.coming-soon-content p {
+    font-size: 14px;
+}

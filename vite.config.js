@@ -10,6 +10,8 @@ export default defineConfig({
             workbox: {
                 skipWaiting: true,
                 clientsClaim: true,
+                cleanupOutdatedCaches: true,
+                globPatterns: ["**/*.{js,css,html,ico,png,svg}"],
                 runtimeCaching: [
                     {
                         urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
@@ -18,11 +20,14 @@ export default defineConfig({
                             cacheName: "google-fonts-cache",
                             expiration: {
                                 maxEntries: 10,
-                                maxAgeSeconds: 60 * 60 * 24 * 365, // 1 год
+                                maxAgeSeconds: 60 * 60 * 24 * 365,
                             },
                         },
                     },
                 ],
+            },
+            devOptions: {
+                enabled: false,
             },
             includeAssets: ["favicon.ico"],
             manifest: {

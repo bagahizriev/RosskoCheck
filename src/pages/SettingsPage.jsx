@@ -1,27 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import RosskoSettings from "../components/RosskoSettings";
-import { updateChecker } from "../utils/updateChecker";
 import "./SettingsPage.css";
 
 function SettingsPage() {
-    const [isCheckingUpdate, setIsCheckingUpdate] = useState(false);
-
-    const handleForceUpdate = async () => {
-        setIsCheckingUpdate(true);
-        try {
-            const hasUpdate = await updateChecker.checkForUpdates();
-            if (hasUpdate) {
-                updateChecker.forceUpdate();
-            } else {
-                alert("У вас уже установлена последняя версия приложения");
-            }
-        } catch (error) {
-            alert("Ошибка при проверке обновлений");
-        } finally {
-            setIsCheckingUpdate(false);
-        }
-    };
-
     return (
         <div className="settings-page">
             <div className="page-header">
@@ -31,19 +12,6 @@ function SettingsPage() {
 
             <div className="settings-sections">
                 <RosskoSettings />
-
-                {/* Секция обновлений */}
-                <div className="update-section">
-                    <div className="section-header">
-                        <h3>🔄 Обновления</h3>
-                    </div>
-                    <div className="section-content">
-                        <p>Проверить наличие обновлений приложения</p>
-                        <button className="update-button" onClick={handleForceUpdate} disabled={isCheckingUpdate}>
-                            {isCheckingUpdate ? "Проверка..." : "Проверить обновления"}
-                        </button>
-                    </div>
-                </div>
 
                 {/* Здесь будут добавляться новые секции настроек */}
                 <div className="coming-soon-section">

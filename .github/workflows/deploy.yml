@@ -22,14 +22,6 @@ jobs:
               with:
                   node-version: "20"
 
-            - name: Generate version info
-              run: |
-                  echo "{
-                    \"version\": \"1.0.0\",
-                    \"buildTime\": \"$(date -u +%Y-%m-%dT%H:%M:%S.%3NZ)\",
-                    \"commit\": \"${{ github.sha }}\"
-                  }" > public/version.json
-
             - name: Install dependencies
               run: npm install
 

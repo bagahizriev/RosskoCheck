@@ -1,29 +1,34 @@
 .balance-card {
-    background: white;
-    border-radius: 16px;
-    padding: 24px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    background: #f8f9fa;
+    border-radius: 0;
+    padding: 32px 24px;
+    box-shadow: none;
+    border: none;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 .card-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
 }
 
 .card-title h3 {
-    font-size: 18px;
-    color: #1f2937;
+    font-size: 32px;
+    color: #000000;
     margin: 0;
+    font-weight: bold;
 }
 
 .btn-refresh-small {
-    background: #f3f4f6;
+    background: #000000;
     border: none;
-    width: 32px;
-    height: 32px;
-    border-radius: 8px;
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
     cursor: pointer;
     transition: background 0.3s;
     display: flex;
@@ -31,8 +36,12 @@
     justify-content: center;
 }
 
+.btn-refresh-small svg {
+    color: white;
+}
+
 .btn-refresh-small:hover:not(:disabled) {
-    background: #e5e7eb;
+    background: #333333;
 }
 
 .btn-refresh-small:disabled {
@@ -54,95 +63,20 @@
 }
 
 .card-content {
-    min-height: 80px;
-}
-
-.loading {
-    text-align: center;
-    padding: 30px 0;
-}
-
-.spinner {
-    width: 32px;
-    height: 32px;
-    border: 3px solid #f3f4f6;
-    border-top: 3px solid #667eea;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-    margin: 0 auto 16px;
-}
-
-.loading p {
-    color: #6b7280;
-    font-size: 14px;
-}
-
-.no-data,
-.error {
-    text-align: center;
-    padding: 30px 0;
-}
-
-.no-data-icon,
-.error-icon {
-    font-size: 32px;
-    margin-bottom: 12px;
-    display: block;
-}
-
-.no-data h3,
-.error h3 {
-    font-size: 16px;
-    color: #374151;
-    margin-bottom: 8px;
-}
-
-.no-data p,
-.error p {
-    color: #6b7280;
-    font-size: 14px;
-    margin-bottom: 16px;
-}
-
-.btn-retry {
-    padding: 8px 16px;
-    background: #ef4444;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 14px;
-    cursor: pointer;
-    transition: background 0.3s;
-}
-
-.btn-retry:hover {
-    background: #dc2626;
-}
-
-.balance-content {
-    animation: fadeIn 0.5s;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    min-height: auto;
+    flex: 1;
 }
 
 .balance-main {
-    text-align: center;
-    padding: 20px 0;
+    text-align: left;
+    padding: 0;
 }
 
 .balance-amount {
-    font-size: 36px;
+    font-size: 48px;
     font-weight: bold;
     margin: 0;
+    line-height: 1.1;
 }
 
 .balance-amount.positive {
@@ -154,5 +88,5 @@
 }
 
 .balance-amount.zero {
-    color: #374151;
+    color: #000000;
 }
